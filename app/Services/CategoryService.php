@@ -27,8 +27,8 @@ class CategoryService
         return $this->categoryRepository->getCategoriesByTenantId($tenant->id);
     }
     
-    public function getCategoryByUrl(string $url) 
+    public function getCategoryByUuid(string $uuid) 
     {
-        return $this->categoryRepository->getCategotyByUrl($url);
+        return $this->categoryRepository->getCategotyByUuid($uuid);
     }
 }
