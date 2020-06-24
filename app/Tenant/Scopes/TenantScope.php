@@ -14,7 +14,7 @@ class TenantScope implements Scope
         $identify = app(ManagerTenant::class)->getTenantIdentify();
         
         if($identify):
-            $builder->where('tenant_id',);
+            $builder->where('tenant_id',$identify);
         endif;
     }
 }

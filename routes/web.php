@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\TableController;
+
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
      /**
      * Role x User
@@ -33,6 +35,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     /*
      * Routes Tables
      */
+    Route::get('tables/qrcode/{identify}',[TableController::class,'qrcode'])->name('tables.qrcode');
     Route::any('tables.search','TableController@search')->name('tables.search');
     Route::resource('tables','TableController');
     

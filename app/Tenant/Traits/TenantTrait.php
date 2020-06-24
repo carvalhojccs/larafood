@@ -10,10 +10,10 @@ trait TenantTrait
     protected static function boot() 
     {
         parent::boot();
-        
+     
         static::observe(TenantObserver::class);
         
         //aplica o scopo para filtar pelo tenant do usuário logado
-        static::addGlobalscope(new TenantScope);
+        $tenant = static::addGlobalscope(new TenantScope);
     }
 }

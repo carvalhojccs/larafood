@@ -26,7 +26,7 @@ class TableController extends Controller
      */
     public function index()
     {
-        //recupera todas as categorias
+        //recupera todas as tables
         $data = $this->repository->paginate();
         
         /*
@@ -139,5 +139,30 @@ class TableController extends Controller
         $data = $this->repository->latest()->tenantUser()->search($filters);
         
         return view('admin.pages.'.$this->model.'.index', compact('filters','data'));
+    }
+    
+    /**
+     * Generate QRCode
+     *
+     * @param  string  $identify
+     * @return \Illuminate\Http\Response
+     */
+    public function qrcode($identify)
+    {
+        if($data = $this->repository->where('identify',$identify)->first()):
+            //recupera o tenant do usuário autenticado
+            $tenant = auth()->user()->tenant;
+        
+            //uri do cliente
+            $uri = env('URI_CLIENT')."/{$tenant->uuid}/{$data->uuid}";
+            
+            return view('admin.pages.'.$this->model.'.qrcode', compact('uri'));
+        else:
+            return redirect()->back();
+        endif;
+        
+        
+        
+        
     }
 }

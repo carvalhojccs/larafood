@@ -48,7 +48,10 @@
                 <tr>
                     <td>{{ $item->identify }}</td>
                     <td>{{ $item->description }}</td>
-                    <td style="text-align: right"><a href="{{ route('tables.show', $item->id) }}" class="btn btn-primary btn-sm">Detalhes</a></td>
+                    <td style="text-align: right">
+                        <a href="{{ route('tables.qrcode', $item->identify) }}" class="btn btn-default btn-sm" target="_blank"><i class="fas fa-qrcode"></i></a>
+                        <a href="{{ route('tables.show', $item->id) }}" class="btn btn-primary btn-sm">Detalhes</a>
+                    </td>
                 </tr>
                 @empty
                 <tr>
