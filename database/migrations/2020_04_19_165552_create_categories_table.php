@@ -17,8 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tenant_id');
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
-            $table->string('name')->unique();
-            $table->string('url')->unique();
+            $table->string('name');
+            $table->string('url');
             $table->text('description');
             $table->timestamps();
         });

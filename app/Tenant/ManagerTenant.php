@@ -11,15 +11,15 @@ class ManagerTenant
      */
     public function getTenantIdentify() 
     {
-        return auth()->user()->tenant_id;
+        return auth()->check() ? auth()->user()->tenant_id : '';
     }
     
     /*
      * recupera um objeto de tenant
      */
-    public function getTenant(): Tenant 
+    public function getTenant()
     {
-        return auth()->user()->tenant;
+        return auth()->check() ? auth()->user()->tenant : '';
     }
     
     /*
