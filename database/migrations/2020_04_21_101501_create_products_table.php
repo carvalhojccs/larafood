@@ -17,8 +17,9 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tenant_id');
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
-            $table->string('title');
-            $table->string('flag');
+            $table->uuid('uuid');
+            $table->string('title')->unique();
+            $table->string('flag')->unique();
             $table->string('image');
             $table->double('price',10,2);
             $table->text('description');
@@ -43,6 +44,5 @@ class CreateProductsTable extends Migration
     {
         Schema::dropIfExists('category_product');
         Schema::dropIfExists('products');
-        
     }
 }
