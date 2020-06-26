@@ -59,6 +59,7 @@ class TableController extends Controller
      */
     public function store(StoreUpdateTable $request)
     {
+        
         $this->repository->create($request->all());
         
         return redirect()->route($this->model.'.index')->withSuccess('message');
